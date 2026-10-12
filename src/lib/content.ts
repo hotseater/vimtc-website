@@ -16,6 +16,7 @@ export type PageMeta = {
   order: number;
   modified: string;
   wordpressTemplate: string;
+  css: string;
   contentFile: string;
 };
 
@@ -35,6 +36,9 @@ export function getPageByPath(path: string): PageMeta | undefined {
 export function getPageBySlug(slug: string): PageMeta | undefined {
   return pages.find((p) => p.slug === slug);
 }
+
+/** Site-wide custom CSS the WordPress custom-CSS plugin injected on every page except the front page. */
+export const sitewideCss: string = readFileSync(join(process.cwd(), "content", "sitewide.css"), "utf8");
 
 /** Read a page's body HTML (build time only; content/ is not shipped to the client). */
 export function readPageHtml(page: PageMeta): string {

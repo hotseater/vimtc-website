@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { PageBanner } from "@/components/Banner";
 import Breadcrumbs, { type Crumb } from "@/components/Breadcrumbs";
+import { sitewideCss } from "@/lib/content";
 
 /** Inner-page frame: banner with title, breadcrumbs, optional "Page Intro" ribbon, then content. Mirrors page.php + loop-page.php. */
 export default function PageShell({
@@ -9,6 +10,7 @@ export default function PageShell({
   bannerAlt,
   intro,
   trail,
+  css,
   children,
 }: {
   title: string;
@@ -16,10 +18,13 @@ export default function PageShell({
   bannerAlt?: string;
   intro?: string | null;
   trail: Crumb[];
+  /** per-page CSS from the WordPress custom-CSS plugin */
+  css?: string;
   children: ReactNode;
 }) {
   return (
     <>
+      <style dangerouslySetInnerHTML={{ __html: sitewideCss + (css ? "\n" + css : "") }} />
       <PageBanner title={title} image={banner} imageAlt={bannerAlt} />
       <div id="main_area">
         <div className="wrapper">

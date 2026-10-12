@@ -50,7 +50,7 @@ export default async function ContentPage({ params }: Props) {
   const isEmpty = html.trim() === "";
 
   return (
-    <PageShell title={page.title} banner={page.banner} bannerAlt={page.bannerAlt} intro={page.intro} trail={trailFor(path)}>
+    <PageShell title={page.title} banner={page.banner} bannerAlt={page.bannerAlt} intro={page.intro} trail={trailFor(path)} css={page.css}>
       {page.slug === "sitemap" ? (
         <SitemapList />
       ) : isEmpty ? (
@@ -65,7 +65,7 @@ export default async function ContentPage({ params }: Props) {
 
 /** Mirrors wp_list_pages(): top-level pages alphabetically with their children nested. */
 function SitemapList() {
-  const top = pages.filter((p) => !p.parent && p.slug !== "sitemap").sort((a, b) => a.title.localeCompare(b.title));
+  const top = pages.filter((p) => !p.parent).sort((a, b) => a.title.localeCompare(b.title));
   return (
     <ul className="sitemap col2">
       {top.map((p) => {

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { HomeBanner } from "@/components/Banner";
 import MessageForm from "@/components/forms/MessageForm";
-import { descriptions, getPageByPath, readPageHtml, widgets } from "@/lib/content";
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { getPageByPath, readPageHtml, widgets } from "@/lib/content";
+import { SITE_DESCRIPTION, SITE_TAGLINE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: `${SITE_NAME} | ${SITE_TAGLINE}` },
-  description: descriptions["/"],
+  // identical to the live site's Yoast output
+  title: { absolute: SITE_TAGLINE },
+  description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
-  openGraph: { title: SITE_TAGLINE, description: descriptions["/"], url: "/", images: [{ url: "/images/theme/slider/rslides/1.jpg", width: 1920, height: 800 }] },
+  openGraph: { title: SITE_TAGLINE, description: SITE_DESCRIPTION, url: "/", images: [{ url: "/images/theme/slider/rslides/1.jpg", width: 1920, height: 800 }] },
 };
 
 const Html = ({ html, className }: { html: string; className?: string }) => <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;

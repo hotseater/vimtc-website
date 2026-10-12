@@ -7,6 +7,12 @@
  * and reposition with CSS instead.
  */
 
+/* ≤800px: the theme moved #nav_area above <header> with jQuery; reorder with flex instead */
+@media only screen and (max-width: 800px) {
+  .protect-me > .clearfix { display: flex; flex-direction: column; }
+  .protect-me > .clearfix > #nav_area { order: -1; }
+}
+
 /* Header logo: in the header on desktop, inside the mobile nav bar below 800px */
 .logo_wrap .main_logo { display: none; }
 @media only screen and (max-width: 800px) {

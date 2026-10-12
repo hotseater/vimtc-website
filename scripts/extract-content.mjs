@@ -95,6 +95,10 @@ function attachmentUrl(id) {
   return f ? `/images/uploads/${f}` : null;
 }
 
+function unescapeHtml(s) {
+  return s.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#0?39;/g, "'");
+}
+
 /** Rewrite WordPress-era URLs/shortcodes to the new site's paths. */
 function rewriteUrls(html) {
   return html
@@ -168,9 +172,14 @@ function autop(html) {
   return s;
 }
 
+/** wptexturize(): straight apostrophes inside words and after a trailing s become ’ (text nodes only). */
+function texturize(html) {
+  return html.replace(/>([^<]*)</g, (m, text) => ">" + text.replace(/(\w)'(\w)/g, "$1\u2019$2").replace(/(s)'(\s|$)/g, "$1\u2019$2") + "<");
+}
+
 /** plugins.js wrapped the college name and phone numbers in <mark> on the client; do it at build time instead. */
 function highlight(html) {
-  return html
+  return texturize(html)
     .replace(/(?![^<]*>)Victory International Ministry Training College/g, '<mark class="comp">$&</mark>')
     .replace(/(?![^<]*>)(\+?1[\s.-])?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b/g, '<mark class="main_phone">$&</mark>');
 }
@@ -196,11 +205,16 @@ const pages = Object.values(posts)
       order: Number(p.menu_order),
       modified: p.post_modified_gmt,
       wordpressTemplate: meta[p.ID]?._wp_page_template ?? "default",
+      // "custom-css-whole-site-and-per-post" plugin: per-page CSS injected into <head> on that page only
+      css: meta[p.ID]?.h5abMetaStylingData ? unescapeHtml(meta[p.ID].h5abMetaStylingData).trim() : "",
       contentFile: `content/pages/${slug}.html`,
     };
   })
   .sort((a, b) => a.id - b.id);
 writeFileSync(resolve(root, "content/pages.json"), JSON.stringify(pages, null, 2) + "\n");
+
+// ---------- site-wide custom CSS (same plugin; WordPress injected it on every page except the front page) ----------
+writeFileSync(resolve(root, "content/sitewide.css"), unescapeHtml(options.h5abCustomStyling || "").trim() + "\n");
 
 // ---------- widgets (custom HTML) ----------
 const widgetsRaw = options.widget_custom_html;

@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import CookieNotice from "@/components/CookieNotice";
 import { menus } from "@/lib/content";
-import { CONTACT, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { CONTACT, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} | ${SITE_TAGLINE}`,
     template: `%s | ${SITE_TAGLINE}`,
   },
-  description: "Victory International Ministry Training College in Phoenix, Arizona provides growing Christians with in-depth, Bible-based study.",
+  description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   openGraph: { type: "website", siteName: SITE_NAME, locale: "en_US" },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
   verification: { google: "google8e36b76cb2cc26ff" },
 };
 
