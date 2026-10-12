@@ -1,0 +1,102 @@
+{
+  "main": [
+    {
+      "label": "Home",
+      "labelHtml": "Home",
+      "href": "/",
+      "external": false
+    },
+    {
+      "label": "About Us",
+      "labelHtml": "About Us",
+      "href": "/ministry-training-college-about-us",
+      "external": false
+    },
+    {
+      "label": "Programs",
+      "labelHtml": "Programs",
+      "href": "/ministry-training-college-programs",
+      "external": false
+    },
+    {
+      "label": "Admissions",
+      "labelHtml": "Admissions",
+      "href": "/ministry-training-college-admissions",
+      "external": false
+    },
+    {
+      "label": "Campus Events",
+      "labelHtml": "Campus <q>Events</q>",
+      "href": "/ministry-training-college-campus-events",
+      "external": false
+    },
+    {
+      "label": "Tuition Payment",
+      "labelHtml": "Tuition <q>Payment</q>",
+      "href": "https://www.paypal.com/donate/?hosted_button_id=HET2MBJCUKCTA",
+      "external": true
+    },
+    {
+      "label": "Contact Us",
+      "labelHtml": "Contact <q>Us</q>",
+      "href": "/ministry-training-college-contact-us",
+      "external": false
+    }
+  ],
+  "footer": [
+    {
+      "label": "Home",
+      "labelHtml": "Home",
+      "href": "/",
+      "external": false
+    },
+    {
+      "label": "About Us",
+      "labelHtml": "About Us",
+      "href": "/ministry-training-college-about-us",
+      "external": false
+    },
+    {
+      "label": "Programs",
+      "labelHtml": "Programs",
+      "href": "/ministry-training-college-programs",
+      "external": false
+    },
+    {
+      "label": "Admissions",
+      "labelHtml": "Admissions",
+      "href": "/ministry-training-college-admissions",
+      "external": false
+    },
+    {
+      "label": "Campus Events",
+      "labelHtml": "Campus Events",
+      "href": "/ministry-training-college-campus-events",
+      "external": false
+    },
+    {
+      "label": "Tuition Payment",
+      "labelHtml": "Tuition Payment",
+      "href": "https://www.paypal.com/donate/?hosted_button_id=HET2MBJCUKCTA",
+      "external": true
+    },
+    {
+      "label": "Contact Us",
+      "labelHtml": "Contact Us",
+      "href": "/ministry-training-college-contact-us",
+      "external": false
+    },
+    {
+      "label": "Accreditation",
+      "labelHtml": "Accreditation",
+      "href": "/ministry-training-college-accreditation",
+      "external": false
+    },
+    {
+      "label": "Racial Discrimination Policy",
+      "labelHtml": "Racial Discrimination Policy",
+      "href": "/ministry-training-college-racial-discrimination-policy",
+      "external": false
+    }
+  ]
+}
