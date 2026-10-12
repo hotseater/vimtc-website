@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { recordSubmission } from "@/lib/supabase";
 import { renderSubmission, sendMail, type Attachment } from "@/lib/mailer";
-import { EMAIL_RE, errorResponse, guard, str } from "@/lib/forms";
+import { EMAIL_RE, clientIp, errorResponse, guard, str } from "@/lib/forms";
 
 const MAX_ATTACHMENT = 8 * 1024 * 1024;
 const ALLOWED = new Set(["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/png"]);
@@ -58,6 +59,7 @@ export async function POST(req: Request) {
       replyTo: email,
       attachments,
     });
+    await recordSubmission({ form: formName, senderName: name, senderEmail: email, fields, attachments: attachments.map((a) => a.filename), ip: clientIp(req), userAgent: req.headers.get("user-agent") });
     return NextResponse.json({ ok: true });
   } catch (e) {
     return errorResponse(e);

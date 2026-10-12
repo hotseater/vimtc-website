@@ -104,7 +104,7 @@ Every existing URL is kept exactly. Nothing changes in the address bar.
 
 **Spam protection:** the old reCAPTCHA keys belong to Proweaver and cannot be reused. Use Cloudflare Turnstile (free, no Google account needed) plus a honeypot field and a per-IP rate limit on the API routes.
 
-**Storage:** the old site kept a copy of every submission in MySQL. The rebuild emails only. The 21 historical submissions in the dump are handed to the client as a CSV and not carried into the new site.
+**Storage:** the old site kept a copy of every submission in MySQL (`formdatabase_emails`). The rebuild emails first and also inserts a row into a Supabase Postgres table `form_submissions` (schema in `supabase/migrations/`). The 21 historical submissions are imported into the same table by `scripts/import-legacy-submissions.mjs`, read straight from the dump so no personal data is committed. Nothing else from the WordPress database is migrated: page content lives in the repo, visitor statistics are archived as CSV, plugin tables are discarded.
 
 ---
 

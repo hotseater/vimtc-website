@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { recordSubmission } from "@/lib/supabase";
 import { renderSubmission, sendMail } from "@/lib/mailer";
-import { EMAIL_RE, errorResponse, guard, str } from "@/lib/forms";
+import { EMAIL_RE, clientIp, errorResponse, guard, str } from "@/lib/forms";
 
 export async function POST(req: Request) {
   try {
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
       html: renderSubmission("Set an Appointment Form", fields),
       replyTo: email,
     });
+    await recordSubmission({ form: "Set an Appointment Form", senderName: name, senderEmail: email, fields, attachments: [], ip: clientIp(req), userAgent: req.headers.get("user-agent") });
     return NextResponse.json({ ok: true });
   } catch (e) {
     return errorResponse(e);

@@ -36,6 +36,19 @@ Re-running the extraction (only needed if the export changes):
 node scripts/extract-content.mjs "/path/to/w13160.sql"
 ```
 
+## Database (Supabase)
+
+Form submissions are emailed **and** stored in a Supabase Postgres table (`public.form_submissions`), replacing the old site's `formdatabase_emails` MySQL table. The site works without Supabase; the insert is skipped when `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are unset and never blocks the email.
+
+```bash
+# one-time, from a machine that can reach the database (needs SUPABASE_DB_URL):
+npm run db:migrate                                   # applies supabase/migrations/*.sql
+npm run db:import-legacy -- /path/to/w13160.sql      # imports the 21 messages from the old WordPress site
+npm run db:import-legacy -- --dry-run /path/to/w13160.sql   # parse only, write nothing
+```
+
+The table has row-level security on and no grants for the anon key, so it is readable only in the Supabase dashboard and writable only by the site's server-side code.
+
 ## Environment variables
 
-See `.env.example`. `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_TO` are required for forms to deliver. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` turn on spam protection; when unset the widget is skipped so preview deployments still work.
+See `.env.example`. `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_TO` are required for forms to deliver. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` turn on spam protection; when unset the widget is skipped so preview deployments still work. `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` enable submission storage (set these on Vercel too). `SUPABASE_DB_URL` is only for the two database scripts and must not be set on Vercel.

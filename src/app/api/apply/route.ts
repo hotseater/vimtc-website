@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { recordSubmission } from "@/lib/supabase";
 import { renderSubmission, sendMail, type Attachment } from "@/lib/mailer";
-import { all, EMAIL_RE, errorResponse, guard, str } from "@/lib/forms";
+import { EMAIL_RE, all, clientIp, errorResponse, guard, str } from "@/lib/forms";
 
 export async function POST(req: Request) {
   try {
@@ -45,6 +46,7 @@ export async function POST(req: Request) {
       replyTo: email,
       attachments,
     });
+    await recordSubmission({ form: "Apply Now Form", senderName: `${first} ${last}`, senderEmail: email, fields, attachments: attachments.map((a) => a.filename), ip: clientIp(req), userAgent: req.headers.get("user-agent") });
     return NextResponse.json({ ok: true });
   } catch (e) {
     return errorResponse(e);
