@@ -42,16 +42,16 @@ export default function ProgramsPage() {
       <section className="nh-band nh-band-white nh-pagehead">
         <div className="nh-container nh-split nh-split-top">
           <div className="nh-stack">
-            <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta">
+            <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta nh-rise" style={{ "--d": "0ms" } as React.CSSProperties}>
               <Link href="/">Home</Link> <span aria-hidden="true">›</span> <span aria-current="page">Programs</span>
             </nav>
-            <h1>
+            <h1 className="nh-rise" style={{ "--d": "100ms" } as React.CSSProperties}>
               Programs for people with a <Ac>calling</Ac>
             </h1>
-            <p className="nh-lead nh-soft">
+            <p className="nh-lead nh-soft nh-rise" style={{ "--d": "220ms" } as React.CSSProperties}>
               Whether you are pursuing pastoral ministry, missions, counseling, or simply seeking to deepen your understanding of Scripture, there is a program here for you. Each one is designed to equip you with the knowledge, skills and spiritual foundation to become an impactful leader in your community and beyond.
             </p>
-            <div className="nh-actions">
+            <div className="nh-actions nh-rise" style={{ "--d": "340ms" } as React.CSSProperties}>
               <Link href="#programs" className="nh-btn nh-btn-blue">
                 Browse the programs <Arrow />
               </Link>
@@ -60,7 +60,7 @@ export default function ProgramsPage() {
               </Link>
             </div>
           </div>
-          <div className="nh-levels" aria-label="The four levels">
+          <div className="nh-levels nh-rise" aria-label="The four levels" style={{ "--d": "260ms" } as React.CSSProperties}>
             <h2 className="nh-h3-ui">
               Four <Ac>levels</Ac>
             </h2>

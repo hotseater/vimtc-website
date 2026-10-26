@@ -52,18 +52,18 @@ export default async function ProgramPage({ params }: Props) {
       <section className="nh-band nh-band-white nh-pagehead">
         <div className="nh-container nh-split nh-program-hero">
           <div className="nh-stack">
-            <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta">
+            <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta nh-rise" style={{ "--d": "0ms" } as React.CSSProperties}>
               <Link href="/">Home</Link> <span aria-hidden="true">›</span> <Link href={LINKS.programs}>Programs</Link> <span aria-hidden="true">›</span> <span aria-current="page">{program.name}</span>
             </nav>
-            <span className="nh-level">
+            <span className="nh-level nh-rise" style={{ "--d": "80ms" } as React.CSSProperties}>
               <span className={`nh-disc${program.level === 4 ? " nh-disc-4" : ""}`} aria-hidden="true">
                 {program.level}
               </span>
               Level {program.level} · {LEVEL_NAMES[program.level]}
             </span>
-            <h1 className="nh-page-title">{program.name}</h1>
-            <p className="nh-lead nh-soft">{details?.overview ?? `${program.name} is one of the college's Bachelor of Arts majors. The full description is on its way from the college; the admissions office can answer questions about it today.`}</p>
-            <div className="nh-actions">
+            <h1 className="nh-page-title nh-rise" style={{ "--d": "160ms" } as React.CSSProperties}>{program.name}</h1>
+            <p className="nh-lead nh-soft nh-rise" style={{ "--d": "280ms" } as React.CSSProperties}>{details?.overview ?? `${program.name} is one of the college's Bachelor of Arts majors. The full description is on its way from the college; the admissions office can answer questions about it today.`}</p>
+            <div className="nh-actions nh-rise" style={{ "--d": "400ms" } as React.CSSProperties}>
               <Link href={LINKS.apply} className="nh-btn nh-btn-gold">
                 Apply for this program <Arrow />
               </Link>
@@ -71,7 +71,7 @@ export default async function ProgramPage({ params }: Props) {
                 Request information
               </Link>
             </div>
-            <ul className="nh-facts nh-num nh-facts-inline">
+            <ul className="nh-facts nh-num nh-facts-inline nh-rise" style={{ "--d": "520ms" } as React.CSSProperties}>
               <li>
                 <strong>Format</strong> Campus or online
               </li>
@@ -88,7 +88,7 @@ export default async function ProgramPage({ params }: Props) {
               ) : null}
             </ul>
           </div>
-          <div className="nh-photo nh-zoom nh-photo-page">
+          <div className="nh-photo nh-zoom nh-photo-page nh-unveil">
             <Image src={program.image} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover" }} priority />
           </div>
         </div>

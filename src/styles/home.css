@@ -413,3 +413,17 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-prose .nh-callout h2 { margin-top: 0; }
 
 .nh-prose .nh-btn, .nh-prose .nh-link { text-decoration: none; }
+
+/* ---- Photographs: slightly muted at rest, full colour on hover ---- */
+.nh-photo img { filter: saturate(0.8) contrast(0.97) brightness(0.98); transition: transform 0.8s var(--expo), filter 0.6s var(--expo); }
+.nh-photo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(36, 39, 45, 0.04) 0%, rgba(36, 39, 45, 0.2) 100%); transition: opacity 0.6s var(--expo); }
+.nh-photo:hover img { filter: none; }
+.nh-photo:hover::after { opacity: 0.4; }
+
+/* ---- Page-head entrance: the copy rises in beats, the photograph wipes in from the right ---- */
+@keyframes nh-unveil { from { clip-path: inset(0 0 0 100%); transform: scale(1.04); } to { clip-path: inset(0); transform: none; } }
+.nh-unveil { animation: nh-unveil 1.1s var(--expo) 0.2s both; }
+@media (prefers-reduced-motion: reduce) {
+  .nh-unveil { animation: none; clip-path: none; transform: none; }
+  .nh-photo img, .nh-photo::after { transition: none; }
+}

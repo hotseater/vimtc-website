@@ -12,7 +12,7 @@ export default function ContentShell({ title, lead, trail, children, wide = fals
     <main>
       <section className="nh-band nh-band-white nh-pagehead nh-pagehead-tight">
         <div className="nh-container nh-stack">
-          <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta">
+          <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta nh-rise" style={{ "--d": "0ms" } as React.CSSProperties}>
             <Link href="/">Home</Link>
             {trail.map((c, i) => (
               <span key={c.href}>
@@ -22,8 +22,14 @@ export default function ContentShell({ title, lead, trail, children, wide = fals
               </span>
             ))}
           </nav>
-          <h1 className="nh-page-title">{title}</h1>
-          {lead ? <p className="nh-lead nh-soft">{lead}</p> : null}
+          <h1 className="nh-page-title nh-rise" style={{ "--d": "100ms" } as React.CSSProperties}>
+            {title}
+          </h1>
+          {lead ? (
+            <p className="nh-lead nh-soft nh-rise" style={{ "--d": "220ms" } as React.CSSProperties}>
+              {lead}
+            </p>
+          ) : null}
         </div>
       </section>
       <section className="nh-band nh-band-gray nh-band-prose">
