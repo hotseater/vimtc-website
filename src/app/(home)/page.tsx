@@ -77,11 +77,9 @@ export default function HomePage() {
       {/* Programs */}
       <section id="programs" className="nh-band nh-band-gray">
         <div className="nh-container nh-stack-lg">
-          <div className="nh-section-head">
-            <h2 className="nh-h2-narrow">
-              Find the program that fits your <Ac>calling</Ac>
-            </h2>
-          </div>
+          <h2 className="nh-h2-line">
+            Find the program that fits your <Ac>calling</Ac>
+          </h2>
           <ProgramsIndex />
           <div className="nh-actions">
             <Link href={LINKS.programs} className="nh-btn nh-btn-blue">
