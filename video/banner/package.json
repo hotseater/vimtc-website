@@ -1,0 +1,22 @@
+{
+  "name": "vimtc-banner-video",
+  "private": true,
+  "version": "1.0.0",
+  "description": "VIMTC home banner: ten college photographs panning and dissolving in a seamless loop, rendered with Remotion.",
+  "scripts": {
+    "preview": "remotion studio src/index.ts",
+    "render:mp4": "remotion render src/index.ts Banner ../../public/video/banner.mp4 --codec h264 --crf 20",
+    "render:webm": "remotion render src/index.ts Banner ../../public/video/banner.webm --codec vp9 --crf 32",
+    "poster": "remotion still src/index.ts Banner ../../public/video/banner-poster.jpg --frame 0 --image-format jpeg --jpeg-quality 88"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.538",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "remotion": "4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.4",
+    "typescript": "5.9.3"
+  }
+}
