@@ -479,3 +479,20 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-brochure { display: flex; gap: var(--s4); align-items: center; margin: var(--s2) 0 0; }
 .nh-brochure img { width: 96px; height: auto; flex: none; }
 .nh-brochure figcaption { max-width: 32ch; }
+
+/* ---- Contact page ---- */
+.nh-contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
+@media (max-width: 900px) { .nh-contact-grid { grid-template-columns: 1fr; gap: var(--s6); } }
+.nh-row-contact { grid-template-columns: 44px minmax(0, 1fr) 24px; }
+.nh-row-contact .nh-row-text strong { font-size: var(--t2); overflow-wrap: anywhere; }
+.nh-contact-icon { width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid var(--rule); color: var(--blue); display: grid; place-items: center; }
+.nh-contact-social { padding-top: var(--s2); }
+.nh-contact-social a { border-color: var(--rule); color: var(--ink-soft); background: #fff; }
+.nh-contact-social a:hover { border-color: var(--blue); color: var(--blue); }
+.nh-contact-card { background: #fff; border: 1px solid var(--rule); border-radius: 24px; padding: var(--s6); display: flex; flex-direction: column; gap: var(--s3); }
+.nh-contact-card .vimtc-form { max-width: none; margin-top: var(--s3); }
+.nh-contact-card .vimtc-form label { font-family: var(--font-display); }
+.nh-band-map { padding-bottom: 0; }
+.nh-map { position: relative; aspect-ratio: 16 / 7; min-height: 320px; margin-top: var(--s2); background: var(--gray); }
+.nh-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(0.85); }
+@media (max-width: 640px) { .nh-contact-card { padding: var(--s5); border-radius: 18px; } .nh-map { aspect-ratio: 4 / 3; } }
