@@ -409,3 +409,5 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 /* Apply callout on the Student Application page */
 .nh-callout { margin-top: var(--s7); padding: var(--s6); background: #fff; border: 1px solid var(--rule); border-radius: 20px; }
 .nh-prose .nh-callout h2 { margin-top: 0; }
+
+.nh-prose .nh-btn, .nh-prose .nh-link { text-decoration: none; }
