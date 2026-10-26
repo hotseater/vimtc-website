@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Admissions",
   description,
   alternates: { canonical: PATH },
-  openGraph: { title: "Admissions", description, url: PATH, images: [{ url: "/images/theme/slider/rslides/1.jpg", width: 1920, height: 800 }] },
+  openGraph: { title: "Admissions", description, url: PATH, images: [{ url: "/images/uploads/2024/11/Associate.jpg", width: 1910, height: 1306 }] },
 };
 
 const Ac = ({ children }: { children: React.ReactNode }) => <span className="nh-ac">{children}</span>;
@@ -67,7 +67,7 @@ export default function AdmissionsPage() {
             </ul>
           </div>
           <div className="nh-photo nh-zoom nh-photo-page nh-unveil">
-            <Image src="/images/theme/slider/rslides/1.jpg" alt="The accreditation certificate being presented at a VIMTC ceremony" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: "58% center" }} priority />
+            <Image src="/images/uploads/2024/11/Associate.jpg" alt="A smiling VIMTC graduate at a ceremony" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: "center 30%" }} priority />
           </div>
         </div>
       </section>
