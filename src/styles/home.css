@@ -528,3 +528,21 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-policy-body { max-width: 72ch; }
 .nh-policy-body :where(h2) { scroll-margin-top: 100px; }
 @media (max-width: 900px) { .nh-policy { grid-template-columns: 1fr; gap: var(--s6); } .nh-policy-nav { position: static; } }
+
+/* ---- Faculty profiles and schedule table ---- */
+.nh-faculty { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: var(--s6) var(--s5); }
+.nh-faculty-lg { grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); }
+.nh-person { display: flex; flex-direction: column; gap: var(--s3); }
+.nh-person-photo { aspect-ratio: 4 / 5; min-height: 0; background: var(--gray-deep); display: grid; place-items: center; }
+.nh-person-initials { font-family: var(--font-display); font-weight: 800; font-size: var(--t5); color: var(--blue); letter-spacing: -0.02em; }
+.nh-person-text { display: flex; flex-direction: column; gap: 4px; }
+.nh-person-text strong { font-family: var(--font-display); font-size: var(--t2); line-height: 1.15; }
+.nh-person-bio { font-size: var(--t0); margin-top: 4px; }
+.nh-empty { max-width: 48em; }
+.nh-sched-cols { grid-template-columns: minmax(0, 1fr) 160px 160px 200px; }
+.nh-row-date { grid-template-columns: 220px minmax(0, 1fr); }
+.nh-row-date time { font-size: var(--t2); color: var(--blue); }
+@media (max-width: 760px) { .nh-sched-cols { grid-template-columns: minmax(0, 1fr) 1fr; row-gap: 6px; } .nh-sched-cols .nh-row-text { grid-column: 1 / -1; } .nh-row-date { grid-template-columns: 1fr; } }
+
+.nh-brochure-cover { margin: 0; min-height: 560px; aspect-ratio: 533 / 800; max-width: 460px; }
+@media (max-width: 900px) { .nh-brochure-cover { min-height: 0; } }

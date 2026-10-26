@@ -98,7 +98,7 @@ export const WHY = [
 export const LEADERSHIP = [
   { name: "Bishop Dr. Phillips Banini Sr.", role: "President" },
   { name: "Apostle Dr. P. Ray Johnson", role: "President & Chancellor, Emeritus" },
-  { name: "Mama Joycelyn Johnson", role: "Co-Founder" },
+  { name: "Mama Joycelyn Johnson", role: "Co-Founder, Emeritus" },
 ];
 
 export const PROGRAM_SLUGS = new Set(PROGRAMS.map((p) => p.slug));

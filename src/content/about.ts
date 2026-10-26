@@ -12,3 +12,14 @@ export const ABOUT = {
   beliefsOutro: "These beliefs form the bedrock of our theological foundation and guide us as we cultivate a vibrant community of faith, learning, and service.",
   beliefs: ["We believe the Bible to be the inspired, only infallible, authoritative Word of God, guiding us with divine wisdom and truth.", "We affirm the Triune nature of God—eternally existing as Father, Son, and Holy Spirit—a profound mystery of divine unity and love.", "Our faith rests in the deity of Christ, His miraculous birth, sinless life, sacrificial death, triumphant resurrection, and promised return in glory.", "We cherish the gift of the Holy Spirit, bestowed upon believers as promised by Jesus, empowering us for spiritual growth and service.", "We embrace divine healing as a provision of Christ’s atonement, believing in the restoration of body, mind, and spirit.", "We hold firm to the hope of resurrection for the saved unto eternal life while acknowledging the sober reality of eternal separation for those who reject God’s offer of forgiveness through His Son."],
 };
+
+/** The founders, from the college's brochure (March 2023) and VIM Global's published history. */
+export const FOUNDERS = {
+  tagline: "Making a mark in the world discipling the nations.",
+  scripture: "Matthew 28:19–20",
+  story: [
+    "Apostle Dr. P. Ray Johnson and Rev. Dr. Mrs. Joycelyn Johnson founded Victory International Ministries in Ghana in 1992. From it grew a family of Bible colleges, headquartered in Ghana with a presence across Africa, the Americas and Europe, that has trained more than 30,000 students.",
+    "The Phoenix college carries that work into the United States. After more than three decades, Dr. Johnson passed the leadership of VIM Global to Apostle Dr. Charles H. N. Carboo and serves as Founder and Emeritus; the college honours Mama Joycelyn Johnson as its First Lady of Victory and Co-Founder, Emeritus.",
+    "Today the college is led by its President, Bishop Dr. Phillips Banini Sr., an alumnus who also serves as its Dean and Vice-Chancellor.",
+  ],
+};

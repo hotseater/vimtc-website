@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Arrow from "@/components/site/Arrow";
 import RequestBand from "@/components/site/RequestBand";
-import { ABOUT } from "@/content/about";
+import { ABOUT, FOUNDERS } from "@/content/about";
 import { LEADERSHIP, LINKS } from "@/content/home";
 import { descriptions } from "@/lib/content";
 
@@ -90,17 +90,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section id="leadership" className="nh-band nh-band-white">
+      {/* Founders */}
+      <section id="founders" className="nh-band nh-band-white">
         <div className="nh-container nh-split">
-          <div className="nh-photo nh-zoom nh-photo-tall">
-            <Image src="/images/theme/main-img1.jpg" alt="Apostle Dr. P. Ray Johnson" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: "top" }} />
-          </div>
+          <figure className="nh-brochure-cover nh-photo nh-zoom">
+            <Image src="/images/uploads/2024/02/about_us_img.jpg" alt="Cover of the VIMTC brochure, March 2023: Apostle Dr. P. Ray Johnson, President and Chancellor Emeritus, and Mama Joycelyn Johnson, Co-Founder Emeritus, the First Lady of Victory" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+          </figure>
           <div className="nh-stack nh-center">
             <h2 className="nh-h2-sm">
-              A journey of more than <Ac>thirty years</Ac>
+              Our <Ac>founders</Ac>
             </h2>
-            <p className="nh-soft">Founded in 1991 by Drs. P. Ray and Mama Joycelyn Johnson, the college is led today by its President, Bishop Dr. Phillips Banini Sr. Its graduates number in the thousands, around the world.</p>
+            <p className="nh-serif nh-belief">
+              “{FOUNDERS.tagline}” <span className="nh-meta">({FOUNDERS.scripture})</span>
+            </p>
+            {FOUNDERS.story.map((t) => (
+              <p key={t} className="nh-soft">
+                {t}
+              </p>
+            ))}
             <dl className="nh-dl">
               {LEADERSHIP.map((l) => (
                 <div key={l.name}>
@@ -109,10 +116,6 @@ export default function AboutPage() {
                 </div>
               ))}
             </dl>
-            <figure className="nh-brochure">
-              <Image src="/images/uploads/2024/02/about_us_img.jpg" alt="Cover of the VIMTC brochure: VIM College, making a mark in the world discipling the nations" width={160} height={240} />
-              <figcaption className="nh-meta">From the VIMTC brochure: “Making a mark in the world discipling the nations.”</figcaption>
-            </figure>
             <div>
               <Link href={LINKS.faculty} className="nh-link">
                 Meet our faculty <Arrow />
