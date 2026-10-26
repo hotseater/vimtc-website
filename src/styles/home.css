@@ -473,3 +473,9 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-row-doc strong { font-family: var(--font-display); font-size: var(--t2); }
 .nh-doc-no { font-family: var(--font-display); font-weight: 700; color: var(--gold-display); }
 .nh-aside-flush { padding-top: 0; border-top: 0; }
+
+/* ---- About page ---- */
+.nh-belief { font-size: var(--t2); line-height: 1.4; color: var(--ink); }
+.nh-brochure { display: flex; gap: var(--s4); align-items: center; margin: var(--s2) 0 0; }
+.nh-brochure img { width: 96px; height: auto; flex: none; }
+.nh-brochure figcaption { max-width: 32ch; }
