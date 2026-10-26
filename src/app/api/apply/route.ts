@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { recordSubmission } from "@/lib/supabase";
-import { renderSubmission, sendMail, type Attachment } from "@/lib/mailer";
+import { renderApplicationConfirmation, renderSubmission, sendConfirmation, sendMail, type Attachment } from "@/lib/mailer";
 import { EMAIL_RE, all, clientIp, errorResponse, guard, str } from "@/lib/forms";
 
 export async function POST(req: Request) {
@@ -46,6 +46,12 @@ export async function POST(req: Request) {
       replyTo: email,
       attachments,
     });
+    // confirmation to the applicant; a failure here must not fail the application
+    try {
+      await sendConfirmation({ to: email, subject: "We have your application – Victory International Ministry Training College", html: renderApplicationConfirmation(first, fields["I am Applying For"]) });
+    } catch (e) {
+      console.error("applicant confirmation failed:", e);
+    }
     await recordSubmission({ form: "Apply Now Form", senderName: `${first} ${last}`, senderEmail: email, fields, attachments: attachments.map((a) => a.filename), ip: clientIp(req), userAgent: req.headers.get("user-agent") });
     return NextResponse.json({ ok: true });
   } catch (e) {

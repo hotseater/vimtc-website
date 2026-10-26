@@ -28,7 +28,7 @@ export const widgets: Record<string, string> = widgetsJson;
 export const menus: { main: MenuItem[]; footer: MenuItem[] } = menusJson;
 
 /** Paths that have their own redesigned route under src/app/(redesign); the generic content route skips them. */
-const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs"]);
+const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs", "/ministry-training-college-admissions"]);
 const isRedesigned = (path: string) => REDESIGNED_PATHS.has(path) || PROGRAM_SLUGS.has(path.split("/").pop() ?? "");
 
 /** Pages that are rendered by the generic content route (everything without a dedicated route). */

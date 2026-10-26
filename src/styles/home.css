@@ -465,3 +465,11 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 @media (prefers-reduced-motion: reduce) { .nh-step-fwd, .nh-step-back { animation: none; } .nh-progress span { transition: none; } }
 
 .nh-wizard .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---- Admissions page ---- */
+.nh-link-sm { font-size: var(--t0); margin-top: 6px; }
+.nh-doc-list { list-style: none; padding: 0; }
+.nh-row-doc { grid-template-columns: 40px minmax(0, 1fr); }
+.nh-row-doc strong { font-family: var(--font-display); font-size: var(--t2); }
+.nh-doc-no { font-family: var(--font-display); font-weight: 700; color: var(--gold-display); }
+.nh-aside-flush { padding-top: 0; border-top: 0; }
