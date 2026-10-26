@@ -427,3 +427,41 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
   .nh-unveil { animation: none; clip-path: none; transform: none; }
   .nh-photo img, .nh-photo::after { transition: none; }
 }
+
+/* ---- Apply: one question at a time ---- */
+.nh-apply { min-height: calc(100vh - 80px); display: flex; align-items: flex-start; padding: var(--s7) 0 var(--s10); }
+.nh-apply-wrap { max-width: 820px; display: flex; flex-direction: column; gap: var(--s5); }
+.nh-wizard { background: #fff; border: 1px solid var(--rule); border-radius: 24px; padding: var(--s6); display: flex; flex-direction: column; gap: var(--s6); min-height: 520px; position: relative; overflow: hidden; }
+.nh-wizard-top { display: flex; flex-direction: column; gap: 10px; }
+.nh-progress { height: 4px; background: var(--gray-deep); border-radius: 4px; overflow: hidden; }
+.nh-progress span { display: block; height: 100%; background: var(--gold-lit); transition: width 0.5s var(--expo); }
+.nh-step { display: flex; flex-direction: column; gap: var(--s5); flex: 1; }
+.nh-step-title { font-size: var(--t4); }
+.nh-step-fields { display: flex; flex-direction: column; gap: var(--s4); }
+.nh-step-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4); }
+.nh-field { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+.nh-field input, .nh-field select { font: inherit; font-family: var(--font-body); font-weight: 400; font-size: var(--t2); color: var(--ink); background: transparent; border: 0; border-bottom: 2px solid var(--rule); padding: 10px 0; border-radius: 0; transition: border-color var(--fast) var(--expo); }
+.nh-field input:focus, .nh-field select:focus { outline: none; border-bottom-color: var(--blue); }
+.nh-field input::placeholder { color: var(--ink-meta); }
+.nh-req { color: #b4231f; }
+.nh-choices { display: flex; flex-direction: column; gap: 10px; max-width: 460px; }
+.nh-choice { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 18px; border-radius: 14px; border: 1.5px solid var(--rule); background: #fff; color: var(--ink); font-family: var(--font-display); font-weight: 600; font-size: var(--t1); text-align: left; cursor: pointer; transition: border-color var(--fast) var(--expo), background var(--fast) var(--expo), transform var(--fast) var(--expo); }
+.nh-choice:hover { border-color: var(--blue); background: var(--blue-tint); }
+.nh-choice:active { transform: scale(0.99); }
+.nh-choice.is-on { border-color: var(--blue); background: var(--blue); color: #fff; }
+.nh-choice-key { width: 26px; height: 26px; border-radius: 6px; border: 1.5px solid currentColor; display: grid; place-items: center; font-size: 12px; font-weight: 700; opacity: 0.7; flex: none; }
+.nh-wizard-sign { margin: 0; max-width: none; }
+.nh-wizard-error { color: #9a2a26; background: #fbe9e8; padding: 12px 16px; border-radius: 12px; font-weight: 600; font-size: var(--t0); }
+.nh-wizard-nav { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: var(--s4); border-top: 1px solid var(--rule); }
+.nh-wizard-nav > span:first-child { flex: 1; }
+.nh-wizard-hint { margin-left: auto; }
+.nh-wizard-done { align-items: flex-start; justify-content: center; gap: var(--s4); }
+.nh-wizard-done h2 { font-size: var(--t4); }
+@keyframes nh-step-fwd { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes nh-step-back { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+.nh-step-fwd { animation: nh-step-fwd 0.5s var(--expo) both; }
+.nh-step-back { animation: nh-step-back 0.5s var(--expo) both; }
+@media (max-width: 640px) { .nh-wizard { padding: var(--s5); border-radius: 18px; min-height: 0; } .nh-step-grid { grid-template-columns: 1fr; } .nh-wizard-hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .nh-step-fwd, .nh-step-back { animation: none; } .nh-progress span { transition: none; } }
+
+.nh-wizard .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

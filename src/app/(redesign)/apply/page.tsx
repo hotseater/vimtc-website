@@ -1,27 +1,25 @@
 import type { Metadata } from "next";
-import ContentShell from "@/components/site/ContentShell";
-import EnrollmentForm from "@/components/forms/EnrollmentForm";
+import Link from "next/link";
+import ApplyWizard from "@/components/forms/ApplyWizard";
 import { descriptions } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "College Enrollment Form",
+  title: "Apply",
   description: descriptions["/apply"],
   alternates: { canonical: "/apply" },
   robots: { index: false, follow: true },
 };
 
-/** Replaces the standalone PHP enrollment form that lived under /wp-content/themes/.../forms/custom/applyNowForm. */
+/** The online application: the enrollment form's fields, one question at a time. */
 export default function ApplyPage() {
   return (
-    <ContentShell
-      title="College Enrollment Form"
-      lead="Complete the form below to apply. Fields marked with an asterisk are required."
-      trail={[
-        { label: "Student Application", href: "/student-application" },
-        { label: "College Enrollment Form", href: "/apply" },
-      ]}
-    >
-      <EnrollmentForm />
-    </ContentShell>
+    <main className="nh-band nh-band-gray nh-apply">
+      <div className="nh-container nh-apply-wrap">
+        <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta">
+          <Link href="/">Home</Link> <span aria-hidden="true">›</span> <Link href="/student-application">Student Application</Link> <span aria-hidden="true">›</span> <span aria-current="page">Apply</span>
+        </nav>
+        <ApplyWizard />
+      </div>
+    </main>
   );
 }
