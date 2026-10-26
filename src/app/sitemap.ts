@@ -1,18 +1,25 @@
 import type { MetadataRoute } from "next";
+import { SITE_INDEX } from "@/content/siteIndex";
 import { pages } from "@/lib/content";
-import { PROGRAMS } from "@/content/home";
 import { SITE_URL } from "@/lib/site";
 
+/** Every page in the site index, with the WordPress modified date where one exists. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const known = new Set(pages.map((p) => p.path));
-  const extra: MetadataRoute.Sitemap = PROGRAMS.filter((p) => !known.has(p.href)).map((p) => ({ url: `${SITE_URL}${p.href}`, changeFrequency: "yearly", priority: 0.6 }));
-  const base: MetadataRoute.Sitemap = pages
-    .filter((p) => p.slug !== "sitemap")
-    .map((p) => ({
-      url: `${SITE_URL}${p.path === "/" ? "" : p.path}`,
-      lastModified: new Date(p.modified.replace(" ", "T") + "Z"),
-      changeFrequency: p.path === "/" ? "monthly" : "yearly",
-      priority: p.path === "/" ? 1 : p.parent ? 0.6 : 0.8,
-    }));
-  return base.concat(extra);
+  const modified = new Map(pages.map((p) => [p.path, new Date(p.modified.replace(" ", "T") + "Z")]));
+  const seen = new Set<string>();
+  const out: MetadataRoute.Sitemap = [];
+  for (const section of SITE_INDEX) {
+    for (const link of section.links) {
+      if (seen.has(link.href) || link.href === "/sitemap" || link.href === "/apply") continue;
+      seen.add(link.href);
+      const home = link.href === "/";
+      out.push({
+        url: `${SITE_URL}${home ? "" : link.href}`,
+        lastModified: modified.get(link.href),
+        changeFrequency: home ? "monthly" : "yearly",
+        priority: home ? 1 : section.title === "Policies" ? 0.3 : link.href.split("/").length > 2 ? 0.6 : 0.8,
+      });
+    }
+  }
+  return out;
 }

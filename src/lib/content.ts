@@ -28,7 +28,25 @@ export const widgets: Record<string, string> = widgetsJson;
 export const menus: { main: MenuItem[]; footer: MenuItem[] } = menusJson;
 
 /** Paths that have their own redesigned route under src/app/(redesign); the generic content route skips them. */
-const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs", "/ministry-training-college-admissions", "/ministry-training-college-about-us", "/ministry-training-college-contact-us"]);
+const REDESIGNED_PATHS = new Set([
+  "/",
+  "/ministry-training-college-programs",
+  "/ministry-training-college-admissions",
+  "/ministry-training-college-about-us",
+  "/ministry-training-college-contact-us",
+  "/ministry-training-college-campus-events",
+  "/ministry-training-college-gallery",
+  "/ministry-training-college-meet-our-faculty",
+  "/ministry-training-college-class-schedules",
+  "/ministry-training-college-curriculum",
+  "/ministry-training-college-accreditation",
+  "/ministry-training-college-set-an-appointment",
+  "/ministry-training-college-donate",
+  "/student-application",
+  "/sitemap",
+]);
+/** Long reading pages that get a section list beside the text. */
+export const POLICY_SLUGS = new Set(["privacy-notice", "victory-international-ministry-training-college-do-not-sell-or-share-my-personal-information", "ministry-training-college-racial-discrimination-policy"]);
 const isRedesigned = (path: string) => REDESIGNED_PATHS.has(path) || PROGRAM_SLUGS.has(path.split("/").pop() ?? "");
 
 /** Pages that are rendered by the generic content route (everything without a dedicated route). */

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContentShell, { type Crumb } from "@/components/site/ContentShell";
 import HtmlContent from "@/components/HtmlContent";
-import { contentPages, descriptions, getPageByPath, getPageBySlug, pages, readPageHtml } from "@/lib/content";
+import { POLICY_SLUGS, contentPages, descriptions, getPageByPath, getPageBySlug, readPageHtml } from "@/lib/content";
 
 type Props = { params: Promise<{ slug: string[] }> };
 
@@ -49,41 +48,39 @@ export default async function ContentPage({ params }: Props) {
   const html = readPageHtml(page);
   const isEmpty = html.trim() === "";
 
+  if (POLICY_SLUGS.has(page.slug)) {
+    const sections = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m, i) => ({ id: `s${i + 1}`, label: m[1].replace(/<[^>]+>/g, "").trim() }));
+    let n = 0;
+    const withIds = html.replace(/<h2([^>]*)>/g, () => `<h2$1 id="s${++n}">`);
+    const updated = new Date(page.modified.replace(" ", "T") + "Z").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    return (
+      <ContentShell title={page.title} lead={page.intro} trail={trailFor(path)} wide>
+        <div className="nh-policy">
+          {sections.length ? (
+            <nav aria-label="Sections" className="nh-policy-nav nh-sticky">
+              <span className="nh-meta">On this page</span>
+              <ol>
+                {sections.map((sec) => (
+                  <li key={sec.id}>
+                    <a href={`#${sec.id}`}>{sec.label}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
+          <div className="nh-policy-body">
+            <p className="nh-meta">Last updated {updated}</p>
+            <HtmlContent html={withIds} />
+          </div>
+        </div>
+      </ContentShell>
+    );
+  }
+
   return (
     <ContentShell title={page.title} lead={page.intro} trail={trailFor(path)}>
-      {page.slug === "sitemap" ? (
-        <SitemapList />
-      ) : isEmpty ? (
-        <p>We are still updating our website with contents. Please check back next time.</p>
-      ) : (
-        <HtmlContent html={html} />
-      )}
+      {isEmpty ? <p>We are still updating our website with contents. Please check back next time.</p> : <HtmlContent html={html} />}
     </ContentShell>
   );
 }
 
-/** Mirrors wp_list_pages(): top-level pages alphabetically with their children nested. */
-function SitemapList() {
-  const top = pages.filter((p) => !p.parent).sort((a, b) => a.title.localeCompare(b.title));
-  return (
-    <ul className="nh-sitemap">
-      {top.map((p) => {
-        const children = pages.filter((c) => c.parent === p.slug).sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
-        return (
-          <li key={p.path}>
-            <Link href={p.path}>{p.title}</Link>
-            {children.length ? (
-              <ul>
-                {children.map((c) => (
-                  <li key={c.path}>
-                    <Link href={c.path}>{c.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}

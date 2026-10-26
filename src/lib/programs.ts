@@ -39,3 +39,17 @@ export function getProgramDetails(slug: string): ProgramDetails {
   const courses = [...html.matchAll(/<tr>\s*<td[^>]*>([\s\S]*?)<\/td>\s*<td[^>]*>([\s\S]*?)<\/td>\s*<\/tr>/g)].map((m) => ({ code: strip(m[1]), name: titleCase(strip(m[2])) }));
   return { overview, areas, courses };
 }
+
+export type CurriculumLevel = { level: number; courses: { code: string; name: string }[] };
+
+/** The curriculum page's three level tables. */
+export function getCurriculumLevels(): CurriculumLevel[] {
+  const html = readFileSync(path.join(PAGES_DIR, "ministry-training-college-curriculum.html"), "utf8");
+  const parts = html.split(/<h3[^>]*>(?:<strong>)?\s*LEVEL\s+(\d)\s*(?:<\/strong>)?<\/h3>/i);
+  const levels: CurriculumLevel[] = [];
+  for (let i = 1; i < parts.length; i += 2) {
+    const courses = [...parts[i + 1].matchAll(/<tr>\s*<td[^>]*>([\s\S]*?)<\/td>\s*<td[^>]*>([\s\S]*?)<\/td>\s*<\/tr>/g)].map((m) => ({ code: strip(m[1]), name: titleCase(strip(m[2])) }));
+    levels.push({ level: Number(parts[i]), courses });
+  }
+  return levels;
+}
