@@ -26,8 +26,11 @@ export const pages: PageMeta[] = pagesJson as PageMeta[];
 export const widgets: Record<string, string> = widgetsJson;
 export const menus: { main: MenuItem[]; footer: MenuItem[] } = menusJson;
 
-/** Pages that are rendered by the generic content route (everything except the home page). */
-export const contentPages = pages.filter((p) => p.path !== "/");
+/** Paths that have their own redesigned route under src/app/(redesign); the generic content route skips them. */
+export const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs"]);
+
+/** Pages that are rendered by the generic content route (everything that has not been redesigned). */
+export const contentPages = pages.filter((p) => !REDESIGNED_PATHS.has(p.path));
 
 export function getPageByPath(path: string): PageMeta | undefined {
   return pages.find((p) => p.path === path);

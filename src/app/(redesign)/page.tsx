@@ -4,7 +4,7 @@ import Link from "next/link";
 import Arrow from "@/components/home/Arrow";
 import VideoBanner from "@/components/home/VideoBanner";
 import ProgramsIndex from "@/components/home/ProgramsIndex";
-import RequestInfoForm from "@/components/home/RequestInfoForm";
+import RequestBand from "@/components/home/RequestBand";
 import { LEADERSHIP, LINKS, WHY } from "@/content/home";
 import { CONTACT, SITE_DESCRIPTION, SITE_TAGLINE } from "@/lib/site";
 
@@ -200,23 +200,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Request information */}
-      <section id="request" className="nh-band nh-band-white nh-band-top0">
-        <div className="nh-container">
-          <div className="nh-panel">
-            <div className="nh-stack">
-              <h2 className="nh-on-blue">
-                Not sure where to start? <Ac>Ask us.</Ac>
-              </h2>
-              <p className="nh-on-blue-soft">Two fields. We reply with the programs that fit, the schedule and the tuition.</p>
-              <p className="nh-on-blue-soft nh-num">
-                Or call <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> · <Link href={LINKS.apply}>start an application</Link>
-              </p>
-            </div>
-            <RequestInfoForm />
-          </div>
-        </div>
-      </section>
+      <RequestBand />
     </main>
   );
 }

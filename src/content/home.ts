@@ -33,6 +33,8 @@ export type Program = {
   level: Level;
   href: string;
   image: string;
+  /** content/pages/<slug>.html, when the program has its own page */
+  slug?: string;
   /** One line from the program's own page, when it has one. */
   blurb?: string;
 };
@@ -42,6 +44,7 @@ export const PROGRAMS: Program[] = [
     name: "Certificate in Discipleship",
     level: 1,
     href: `${LINKS.programs}/certificate-in-discipleship`,
+    slug: "certificate-in-discipleship",
     image: "/images/uploads/2024/11/WhatsApp-Image-2024-11-21-at-12.21.05-PM.jpeg",
     blurb: "Biblical foundations, spiritual formation, leadership development and practical ministry skills.",
   },
@@ -49,6 +52,7 @@ export const PROGRAMS: Program[] = [
     name: "Diploma in Biblical Studies",
     level: 2,
     href: `${LINKS.programs}/diploma-in-biblical-studies`,
+    slug: "diploma-in-biblical-studies",
     image: "/images/uploads/2024/11/diploma.jpeg",
     blurb: "Gain a solid foundation in biblical principles and more.",
   },
@@ -56,6 +60,7 @@ export const PROGRAMS: Program[] = [
     name: "Associate Degree in Ministry",
     level: 3,
     href: `${LINKS.programs}/associate-degree-in-ministry`,
+    slug: "associate-degree-in-ministry",
     image: "/images/uploads/2024/11/Associate.jpg",
     blurb: "Biblical studies, ministry skills, spiritual formation and field education.",
   },
@@ -63,6 +68,7 @@ export const PROGRAMS: Program[] = [
     name: "Bachelor of Arts in Ministerial Studies",
     level: 4,
     href: `${LINKS.programs}/bachelor-of-arts-in-ministerial-studies`,
+    slug: "bachelor-of-arts-in-ministerial-studies",
     image: "/images/theme/thumbnails/4.jpg",
     blurb: "Theological depth and hands-on training for church and community leadership.",
   },
