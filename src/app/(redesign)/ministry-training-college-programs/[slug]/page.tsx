@@ -50,7 +50,7 @@ export default async function ProgramPage({ params }: Props) {
     <main>
       {/* Head */}
       <section className="nh-band nh-band-white nh-pagehead">
-        <div className="nh-container nh-split nh-split-top">
+        <div className="nh-container nh-split nh-program-hero">
           <div className="nh-stack">
             <nav aria-label="Breadcrumb" className="nh-crumbs nh-meta">
               <Link href="/">Home</Link> <span aria-hidden="true">›</span> <Link href={LINKS.programs}>Programs</Link> <span aria-hidden="true">›</span> <span aria-current="page">{program.name}</span>

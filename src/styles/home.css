@@ -393,7 +393,9 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 @media (max-width: 600px) { .vimtc-form .form_row { grid-template-columns: 1fr; } }
 
 /* ---- Program pages ---- */
-.nh-photo-page { min-height: 420px; }
+.nh-program-hero { align-items: stretch; }
+.nh-photo-page { min-height: 0; }
+@media (max-width: 900px) { .nh-photo-page { aspect-ratio: 4 / 3; } }
 .nh-facts-inline { padding: var(--s4) 0 0; border-top: 1px solid var(--rule); grid-template-columns: 1fr; gap: var(--s2); }
 .nh-facts-inline strong { display: inline-block; min-width: 72px; }
 .nh-courses-1 { grid-template-columns: 1fr; }
