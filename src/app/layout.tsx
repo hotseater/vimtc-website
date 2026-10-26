@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Archivo, Questrial } from "next/font/google";
-import Header from "@/components/Header";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
+import { Archivo, Questrial, Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk } from "next/font/google";
 import CookieNotice from "@/components/CookieNotice";
-import { menus } from "@/lib/content";
 import { CONTACT, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const questrial = Questrial({ subsets: ["latin"], weight: "400", variable: "--font-questrial", display: "swap" });
+// Redesign fonts (see docs/DESIGN.md): display and UI, the serif voice, and reading.
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
+const instrument = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-instrument", display: "swap" });
+const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,17 +47,9 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${archivo.variable} ${questrial.variable}`}>
+    <html lang="en-US" className={`${archivo.variable} ${questrial.variable} ${bricolage.variable} ${instrument.variable} ${hanken.variable}`}>
       <body>
-        <div className="protect-me">
-          <div className="clearfix">
-            <Header />
-            <Nav items={menus.main} />
-            {children}
-            <Footer />
-            <BackToTop />
-          </div>
-        </div>
+        {children}
         <CookieNotice />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       </body>
