@@ -405,3 +405,7 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-prose :where(h2.president span) { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: var(--t3); color: var(--blue); }
 .nh-prose :where(.our_founders) { display: flex; flex-direction: column; gap: var(--s4); }
 .nh-prose :where(.our_founders img) { max-width: 480px; }
+
+/* Apply callout on the Student Application page */
+.nh-callout { margin-top: var(--s7); padding: var(--s6); background: #fff; border: 1px solid var(--rule); border-radius: 20px; }
+.nh-prose .nh-callout h2 { margin-top: 0; }
