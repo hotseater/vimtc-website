@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { PROGRAM_SLUGS } from "@/content/home";
 import pagesJson from "../../content/pages.json";
 import widgetsJson from "../../content/widgets.json";
 import menusJson from "../../content/menus.json";
@@ -27,10 +28,11 @@ export const widgets: Record<string, string> = widgetsJson;
 export const menus: { main: MenuItem[]; footer: MenuItem[] } = menusJson;
 
 /** Paths that have their own redesigned route under src/app/(redesign); the generic content route skips them. */
-export const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs"]);
+const REDESIGNED_PATHS = new Set(["/", "/ministry-training-college-programs"]);
+const isRedesigned = (path: string) => REDESIGNED_PATHS.has(path) || PROGRAM_SLUGS.has(path.split("/").pop() ?? "");
 
-/** Pages that are rendered by the generic content route (everything that has not been redesigned). */
-export const contentPages = pages.filter((p) => !REDESIGNED_PATHS.has(p.path));
+/** Pages that are rendered by the generic content route (everything without a dedicated route). */
+export const contentPages = pages.filter((p) => !isRedesigned(p.path));
 
 export function getPageByPath(path: string): PageMeta | undefined {
   return pages.find((p) => p.path === path);
@@ -58,6 +60,10 @@ export const descriptions: Record<string, string> = {
   "/ministry-training-college-programs/diploma-in-biblical-studies": "The Diploma of Biblical Studies offers in-depth Scripture study, biblical interpretation, a theological framework and practical ministry skills.",
   "/ministry-training-college-programs/associate-degree-in-ministry": "The Associate Degree in School of Ministry integrates biblical studies, ministry skills, spiritual formation and field education.",
   "/ministry-training-college-programs/bachelor-of-arts-in-ministerial-studies": "The Bachelor of Arts in Ministerial Studies combines rigorous theological education with hands-on ministry training for leadership in the church and community.",
+  "/ministry-training-college-programs/bachelor-of-arts-in-theological-and-bible-studies": "Bachelor of Arts in Theological & Bible Studies at Victory International Ministry Training College, Phoenix, Arizona.",
+  "/ministry-training-college-programs/bachelor-of-arts-in-christian-pastoral-counseling": "Bachelor of Arts in Christian/Pastoral Counseling at Victory International Ministry Training College, Phoenix, Arizona.",
+  "/ministry-training-college-programs/bachelor-of-arts-in-religious-and-christian-education": "Bachelor of Arts in Religious & Christian Education at Victory International Ministry Training College, Phoenix, Arizona.",
+  "/ministry-training-college-programs/bachelor-of-missions-and-inter-cultural-studies": "Bachelor of Missions & Inter-Cultural Studies at Victory International Ministry Training College, Phoenix, Arizona.",
   "/ministry-training-college-programs/bachelor-of-arts-in-family-counseling": "Bachelor of Arts in Family Counseling at Victory International Ministry Training College, Phoenix, Arizona.",
   "/ministry-training-college-programs/bachelor-of-arts-in-ministerial-chaplaincy-cpe": "Bachelor of Arts in Ministerial Chaplaincy (CPE) at Victory International Ministry Training College, Phoenix, Arizona.",
   "/ministry-training-college-admissions": "Why choose VIMTC and how to apply: explore programs, complete the online application and prepare for your semester.",

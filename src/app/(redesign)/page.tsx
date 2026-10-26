@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Arrow from "@/components/home/Arrow";
-import VideoBanner from "@/components/home/VideoBanner";
-import ProgramsIndex from "@/components/home/ProgramsIndex";
-import RequestBand from "@/components/home/RequestBand";
+import Arrow from "@/components/site/Arrow";
+import VideoBanner from "@/components/site/VideoBanner";
+import ProgramsIndex from "@/components/site/ProgramsIndex";
+import RequestBand from "@/components/site/RequestBand";
 import { LEADERSHIP, LINKS, WHY } from "@/content/home";
 import { CONTACT, SITE_DESCRIPTION, SITE_TAGLINE } from "@/lib/site";
 

@@ -307,3 +307,101 @@ a.nh-row:hover { background: rgba(242, 201, 76, 0.14); padding-left: 6px; color:
 .nh-footer-social { display: flex; gap: 10px; }
 .nh-footer-social a { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.22); color: var(--on-charcoal); transition: border-color var(--fast) var(--expo), color var(--fast) var(--expo), background var(--fast) var(--expo); }
 .nh-footer-social a:hover { border-color: var(--gold-lit); color: var(--gold-lit); text-decoration: none; }
+
+/* ---- Content pages: reading prose for the WordPress page bodies ---- */
+.nh-pagehead-tight { padding-bottom: var(--s7); }
+.nh-page-title { font-size: clamp(2.25rem, 1.5rem + 3vw, 4rem); }
+.nh-band-prose { padding-top: var(--s8); }
+.nh-prose { max-width: 76ch; margin: 0 auto; padding-left: var(--s5); padding-right: var(--s5); display: flow-root; }
+.nh-prose-wide { max-width: 1200px; }
+.nh-prose > * + *, .nh-prose > div > * + * { margin-top: 1.1em; }
+.nh-prose :where(p, li) { line-height: 1.65; }
+.nh-prose :where(h2) { font-size: var(--t4); margin-top: 1.6em; }
+.nh-prose :where(h3) { font-size: var(--t3); margin-top: 1.4em; }
+.nh-prose :where(h2, h3):first-child { margin-top: 0; }
+.nh-prose :where(a) { color: var(--blue); text-decoration: underline; text-decoration-color: rgba(43, 76, 140, 0.35); }
+.nh-prose :where(a:hover) { text-decoration-color: currentColor; }
+.nh-prose :where(ul, ol) { padding-left: 1.4em; margin-top: 1em; }
+.nh-prose :where(ul) { list-style: disc; }
+.nh-prose :where(ol) { list-style: decimal; }
+.nh-prose :where(li + li) { margin-top: 0.45em; }
+.nh-prose :where(li > span:first-child, li > strong:first-child) { font-weight: 700; color: var(--ink); }
+.nh-prose :where(mark) { background: none; color: inherit; font-weight: 700; }
+.nh-prose :where(img) { max-width: 100%; height: auto; }
+.nh-prose :where(figure) { margin: 1.5em 0; }
+.nh-prose :where(iframe) { max-width: 100%; border: 0; }
+.nh-prose :where(hr) { border: 0; border-top: 1px solid var(--rule); margin: 2em 0; }
+.nh-prose :where(.wp-block-spacer) { height: var(--s6) !important; }
+.nh-prose :where(.has-text-align-center) { text-align: left; }
+.nh-prose :where(.wp-block-table) { margin: 1.5em 0; overflow-x: auto; }
+.nh-prose :where(table) { border-collapse: collapse; width: 100%; font-size: var(--t0); font-variant-numeric: tabular-nums; }
+.nh-prose :where(th) { text-align: left; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-meta); padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.nh-prose :where(td) { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.nh-prose :where(td:first-child) { font-family: var(--font-display); font-weight: 700; color: var(--blue); white-space: nowrap; }
+.nh-prose :where(.btn-style, .curriculum_button a, .student_btn a, .app_btn a) { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--blue); color: #fff; font-family: var(--font-display); font-weight: 700; text-decoration: none; transition: background var(--base) var(--expo), transform var(--base) var(--expo); }
+.nh-prose :where(.btn-style:hover, .curriculum_button a:hover, .student_btn a:hover, .app_btn a:hover) { background: var(--blue-lift); color: #fff; transform: translateY(-2px); }
+.nh-prose :where(.nh_contact) { margin-top: var(--s8); padding-top: var(--s6); border-top: 1px solid var(--rule); }
+.nh-prose :where(.nh_contact h2, .nh_contact h3) { margin-top: 0; }
+.nh-prose :where(.nh-gallery, .nh-campus) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--s4); margin: 1.5em 0; }
+.nh-prose :where(.nh-gallery figure, .nh-campus figure) { margin: 0; }
+.nh-prose :where(.nh-gallery img, .nh-campus img) { width: 100%; height: auto; }
+.nh-prose :where(.our_founders, .president) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: var(--s6); align-items: start; margin: 1.5em 0; }
+.nh-prose :where(.gallery-image) { margin: 0; }
+.nh-prose :where(.upcoming) { padding: var(--s5); background: #fff; border: 1px solid var(--rule); }
+.nh-prose :where(.services_box) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: var(--s5); }
+.nh-prose :where(.services_box figure) { margin: 0; }
+.nh-prose :where(.privacy_list) { padding-left: 1.4em; }
+.nh-sitemap { list-style: none; padding: 0; columns: 2; column-gap: var(--s7); }
+.nh-sitemap > li { break-inside: avoid; padding: 10px 0; border-top: 1px solid var(--rule); font-family: var(--font-display); font-weight: 700; }
+.nh-sitemap ul { list-style: none; padding: 6px 0 0 var(--s4); font-family: var(--font-body); font-weight: 400; }
+.nh-sitemap ul li { padding: 4px 0; }
+@media (max-width: 700px) { .nh-sitemap { columns: 1; } }
+
+/* ---- Forms on the content pages (contact, appointment, enrollment) ---- */
+.vimtc-form { max-width: 760px; margin: var(--s4) 0 0; display: flex; flex-direction: column; gap: var(--s4); }
+.vimtc-form fieldset { border: 0; padding: var(--s5) 0 0; margin: 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: var(--s4); }
+.vimtc-form legend { font-family: var(--font-display); font-size: var(--t3); font-weight: 700; letter-spacing: -0.02em; padding: 0 0 var(--s3); }
+.vimtc-form .form_row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4); }
+.vimtc-form .form_row.single { grid-template-columns: 1fr; }
+.vimtc-form label { display: block; font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+.vimtc-form label .req { color: #b4231f; }
+.vimtc-form input[type="text"], .vimtc-form input[type="email"], .vimtc-form input[type="tel"], .vimtc-form input[type="date"],
+.vimtc-form input[type="time"], .vimtc-form input[type="number"], .vimtc-form input[type="file"], .vimtc-form select, .vimtc-form textarea {
+  width: 100%; min-height: 52px; padding: 12px 16px; font: inherit; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 12px;
+  transition: border-color var(--fast) var(--expo), box-shadow var(--fast) var(--expo); }
+.vimtc-form input:hover, .vimtc-form select:hover, .vimtc-form textarea:hover { border-color: var(--ink-meta); }
+.vimtc-form input:focus, .vimtc-form select:focus, .vimtc-form textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 4px rgba(43, 76, 140, 0.15); }
+.vimtc-form select { -webkit-appearance: auto; appearance: auto; }
+.vimtc-form textarea { min-height: 140px; }
+.vimtc-form .choices { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.vimtc-form .choices label { font-family: var(--font-body); font-weight: 400; display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.vimtc-form .choices input, .vimtc-form .consent input { -webkit-appearance: auto; appearance: auto; width: 18px; height: 18px; accent-color: var(--blue); }
+.vimtc-form .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--t0); line-height: 1.5; color: var(--ink-soft); }
+.vimtc-form .consent input { margin-top: 3px; flex: none; }
+.vimtc-form .consent a { font-weight: 700; color: var(--blue); }
+.vimtc-form button.btn-style, .donate_btn a { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border: 0; border-radius: 999px; background: var(--gold-lit); color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 1rem; cursor: pointer; align-self: flex-start; text-decoration: none; transition: background var(--base) var(--expo), transform var(--base) var(--expo); }
+.vimtc-form button.btn-style:hover, .donate_btn a:hover { background: #f7d56a; transform: translateY(-2px); color: var(--ink); }
+.vimtc-form button.btn-style:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.vimtc-form .form_status, .nh-form .form_status { padding: 14px 18px; border-radius: 12px; font-weight: 700; }
+.vimtc-form .form_status.ok { background: #e6f3ea; color: #1b5e3a; }
+.vimtc-form .form_status.err { background: #fbe9e8; color: #9a2a26; }
+.vimtc-form .hp, .nh-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.vimtc-form .signature { border: 1.5px solid var(--rule); border-radius: 12px; background: #fff; touch-action: none; width: 100%; max-width: 420px; height: 140px; display: block; }
+.vimtc-form .signature_tools { display: flex; gap: 15px; align-items: center; margin: 8px 0 0; font-size: var(--t0); }
+.vimtc-form .signature_tools button { background: none; border: 0; color: var(--blue); font-weight: 700; cursor: pointer; padding: 0; }
+.donate_btn { margin-top: var(--s5); }
+@media (max-width: 600px) { .vimtc-form .form_row { grid-template-columns: 1fr; } }
+
+/* ---- Program pages ---- */
+.nh-photo-page { min-height: 420px; }
+.nh-facts-inline { padding: var(--s4) 0 0; border-top: 1px solid var(--rule); grid-template-columns: 1fr; gap: var(--s2); }
+.nh-facts-inline strong { display: inline-block; min-width: 72px; }
+.nh-courses-1 { grid-template-columns: 1fr; }
+.nh-courses-1 li:last-child { border-bottom: 1px solid var(--rule); }
+
+/* About page: the President heading sits inside a bare list item in the export; the founders block is a heading over one image */
+.nh-prose :where(ul:has(> li > .president)) { list-style: none; padding: 0; }
+.nh-prose :where(h2.president) { display: flex; flex-direction: column; gap: 6px; }
+.nh-prose :where(h2.president span) { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: var(--t3); color: var(--blue); }
+.nh-prose :where(.our_founders) { display: flex; flex-direction: column; gap: var(--s4); }
+.nh-prose :where(.our_founders img) { max-width: 480px; }

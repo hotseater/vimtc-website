@@ -33,8 +33,10 @@ export type Program = {
   level: Level;
   href: string;
   image: string;
-  /** content/pages/<slug>.html, when the program has its own page */
-  slug?: string;
+  /** URL slug under /ministry-training-college-programs */
+  slug: string;
+  /** true when content/pages/<slug>.html exists with the program's own copy */
+  hasPage: boolean;
   /** One line from the program's own page, when it has one. */
   blurb?: string;
 };
@@ -45,6 +47,7 @@ export const PROGRAMS: Program[] = [
     level: 1,
     href: `${LINKS.programs}/certificate-in-discipleship`,
     slug: "certificate-in-discipleship",
+    hasPage: true,
     image: "/images/uploads/2024/11/WhatsApp-Image-2024-11-21-at-12.21.05-PM.jpeg",
     blurb: "Biblical foundations, spiritual formation, leadership development and practical ministry skills.",
   },
@@ -53,6 +56,7 @@ export const PROGRAMS: Program[] = [
     level: 2,
     href: `${LINKS.programs}/diploma-in-biblical-studies`,
     slug: "diploma-in-biblical-studies",
+    hasPage: true,
     image: "/images/uploads/2024/11/diploma.jpeg",
     blurb: "Gain a solid foundation in biblical principles and more.",
   },
@@ -61,6 +65,7 @@ export const PROGRAMS: Program[] = [
     level: 3,
     href: `${LINKS.programs}/associate-degree-in-ministry`,
     slug: "associate-degree-in-ministry",
+    hasPage: true,
     image: "/images/uploads/2024/11/Associate.jpg",
     blurb: "Biblical studies, ministry skills, spiritual formation and field education.",
   },
@@ -69,13 +74,14 @@ export const PROGRAMS: Program[] = [
     level: 4,
     href: `${LINKS.programs}/bachelor-of-arts-in-ministerial-studies`,
     slug: "bachelor-of-arts-in-ministerial-studies",
+    hasPage: true,
     image: "/images/theme/thumbnails/4.jpg",
     blurb: "Theological depth and hands-on training for church and community leadership.",
   },
-  { name: "Bachelor of Arts in Theological & Bible Studies", level: 4, href: LINKS.programs, image: "/images/uploads/2024/02/nh-13.jpg" },
-  { name: "Bachelor of Arts in Christian/Pastoral Counseling", level: 4, href: LINKS.programs, image: "/images/uploads/2024/02/nh-14.jpg" },
-  { name: "Bachelor of Arts in Religious & Christian Education", level: 4, href: LINKS.programs, image: "/images/uploads/2024/02/nh-3.jpg" },
-  { name: "Bachelor of Missions & Inter-Cultural Studies", level: 4, href: LINKS.programs, image: "/images/uploads/2025/08/ministry-training-college.jpg" },
+  { name: "Bachelor of Arts in Theological & Bible Studies", level: 4, slug: "bachelor-of-arts-in-theological-and-bible-studies", hasPage: false, href: `${LINKS.programs}/bachelor-of-arts-in-theological-and-bible-studies`, image: "/images/uploads/2024/02/nh-13.jpg" },
+  { name: "Bachelor of Arts in Christian/Pastoral Counseling", level: 4, slug: "bachelor-of-arts-in-christian-pastoral-counseling", hasPage: false, href: `${LINKS.programs}/bachelor-of-arts-in-christian-pastoral-counseling`, image: "/images/uploads/2024/02/nh-14.jpg" },
+  { name: "Bachelor of Arts in Religious & Christian Education", level: 4, slug: "bachelor-of-arts-in-religious-and-christian-education", hasPage: false, href: `${LINKS.programs}/bachelor-of-arts-in-religious-and-christian-education`, image: "/images/uploads/2024/02/nh-3.jpg" },
+  { name: "Bachelor of Missions & Inter-Cultural Studies", level: 4, slug: "bachelor-of-missions-and-inter-cultural-studies", hasPage: false, href: `${LINKS.programs}/bachelor-of-missions-and-inter-cultural-studies`, image: "/images/uploads/2025/08/ministry-training-college.jpg" },
 ];
 
 export const WHY = [
@@ -94,3 +100,5 @@ export const LEADERSHIP = [
   { name: "Apostle Dr. P. Ray Johnson", role: "President & Chancellor, Emeritus" },
   { name: "Mama Joycelyn Johnson", role: "Co-Founder" },
 ];
+
+export const PROGRAM_SLUGS = new Set(PROGRAMS.map((p) => p.slug));

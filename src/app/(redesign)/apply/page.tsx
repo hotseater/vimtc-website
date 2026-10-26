@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PageShell from "@/components/PageShell";
+import ContentShell from "@/components/site/ContentShell";
 import EnrollmentForm from "@/components/forms/EnrollmentForm";
 import { descriptions } from "@/lib/content";
 
@@ -13,16 +13,15 @@ export const metadata: Metadata = {
 /** Replaces the standalone PHP enrollment form that lived under /wp-content/themes/.../forms/custom/applyNowForm. */
 export default function ApplyPage() {
   return (
-    <PageShell
+    <ContentShell
       title="College Enrollment Form"
-      banner="/images/uploads/2024/02/nh-8.jpg"
-      bannerAlt="Young boy get his diploma on stage"
+      lead="Complete the form below to apply. Fields marked with an asterisk are required."
       trail={[
         { label: "Student Application", href: "/student-application" },
         { label: "College Enrollment Form", href: "/apply" },
       ]}
     >
       <EnrollmentForm />
-    </PageShell>
+    </ContentShell>
   );
 }

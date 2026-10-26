@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Archivo, Questrial, Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif, Hanken_Grotesk } from "next/font/google";
 import CookieNotice from "@/components/CookieNotice";
 import { CONTACT, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
-const questrial = Questrial({ subsets: ["latin"], weight: "400", variable: "--font-questrial", display: "swap" });
-// Redesign fonts (see docs/DESIGN.md): display and UI, the serif voice, and reading.
+// Fonts (see docs/DESIGN.md): display and UI, the serif voice, and reading.
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
 const instrument = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-instrument", display: "swap" });
 const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" });
@@ -47,7 +45,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${archivo.variable} ${questrial.variable} ${bricolage.variable} ${instrument.variable} ${hanken.variable}`}>
+    <html lang="en-US" className={`${bricolage.variable} ${instrument.variable} ${hanken.variable}`}>
       <body>
         {children}
         <CookieNotice />

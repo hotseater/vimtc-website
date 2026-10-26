@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Arrow from "@/components/home/Arrow";
-import ProgramsIndex from "@/components/home/ProgramsIndex";
-import RequestBand from "@/components/home/RequestBand";
+import Arrow from "@/components/site/Arrow";
+import ProgramsIndex from "@/components/site/ProgramsIndex";
+import RequestBand from "@/components/site/RequestBand";
 import { LEVEL_NAMES, LINKS, PROGRAMS } from "@/content/home";
 import { descriptions } from "@/lib/content";
 import { getProgramDetails } from "@/lib/programs";
@@ -33,8 +33,8 @@ const STEPS = [
 ];
 
 export default function ProgramsPage() {
-  const detailed = PROGRAMS.filter((p) => p.slug).map((p) => ({ ...p, details: getProgramDetails(p.slug!) }));
-  const others = PROGRAMS.filter((p) => !p.slug);
+  const detailed = PROGRAMS.filter((p) => p.hasPage).map((p) => ({ ...p, details: getProgramDetails(p.slug) }));
+  const others = PROGRAMS.filter((p) => !p.hasPage);
 
   return (
     <main>
@@ -169,14 +169,14 @@ export default function ProgramsPage() {
               <h2 className="nh-h2-sm">
                 More bachelor <Ac>majors</Ac>
               </h2>
-              <p className="nh-soft nh-program-overview">Four further Bachelor of Arts majors are offered. Full descriptions are on their way; in the meantime the admissions office can answer questions about any of them.</p>
+              <p className="nh-soft nh-program-overview">Four further Bachelor of Arts majors are offered. Each has its own page with the level, the pathway and how to apply; full descriptions are on their way from the college.</p>
             </header>
             <div className="nh-rows">
               {others.map((p) => (
-                <Link key={p.name} href="#request" className="nh-row nh-row-2">
+                <Link key={p.name} href={p.href} className="nh-row nh-row-2">
                   <span className="nh-row-text">
                     <strong>{p.name}</strong>
-                    <span className="nh-soft">Ask admissions about this major</span>
+                    <span className="nh-soft">Level 4 · Bachelor · Campus or online</span>
                   </span>
                   <Arrow size={22} />
                 </Link>

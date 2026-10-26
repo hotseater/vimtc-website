@@ -1,109 +1,18 @@
 @import "tailwindcss";
-@import "../styles/theme.css";
 
 /*
- * Overrides needed because the original theme moved DOM nodes around with jQuery
- * (plugins.js swap_this) depending on viewport width. We render each element once
- * and reposition with CSS instead.
+ * Site-wide styles. The design system lives in src/styles/home.css (loaded by the redesign
+ * layout); this file carries only what sits outside it: the cookie notice and base resets.
  */
-
-/* ≤800px: the theme moved #nav_area above <header> with jQuery; reorder with flex instead */
-@media only screen and (max-width: 800px) {
-  .protect-me > .clearfix { display: flex; flex-direction: column; }
-  .protect-me > .clearfix > #nav_area { order: -1; }
-}
-
-/* Header logo: in the header on desktop, inside the mobile nav bar below 800px */
-.logo_wrap .main_logo { display: none; }
-@media only screen and (max-width: 800px) {
-  header .main_logo { display: none; }
-  .logo_wrap .main_logo { display: block; float: left; width: 90px; max-width: 90px; }
-  .logo_wrap .main_logo img { width: 100%; }
-}
-
-/* Footer map: next to the footer logo on desktop, first thing in the footer on tablet/mobile */
-@media only screen and (max-width: 1000px) {
-  .footer_top_con { display: flex !important; flex-direction: column; }
-  .footer_top_con .gmap { order: -1; }
-}
-
-/* Hero slider – replaces the jQuery skitter/rslides plugins with a CSS cross-fade */
-.hero_slides { position: relative; width: 100%; overflow: hidden; }
-.hero_slides figure { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; margin: 0; }
-.hero_slides figure.is-active { opacity: 1; position: relative; }
-.hero_slides img { display: block; width: 100%; height: auto; }
-.box_skitter .hero_slides figure img { aspect-ratio: 1590 / 857; object-fit: cover; }
-.rslides .hero_slides figure img { aspect-ratio: 1920 / 800; object-fit: cover; }
-.box_skitter { background: var(--primaryColor); }
-
-/* Inner-page banner image is a plain <img>; keep the theme's 1920px stage */
-.non_ban_img img { width: 100%; height: auto; }
-
-/* Mobile nav: the theme used body.active to lock scroll */
-body.active { overflow: hidden; }
-
-/* Forms rendered in-page (the WordPress site loaded them in iframes) */
-.vimtc-form { max-width: 760px; margin: 30px auto 0; text-align: left; }
-.vimtc-form fieldset { border: 0; padding: 0; margin: 0 0 25px; }
-.vimtc-form legend { font: 700 22px/1.2 var(--primaryHeading); color: var(--primaryTxtColor); margin: 0 0 15px; }
-.vimtc-form .form_row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 0 0 18px; }
-.vimtc-form .form_row.single { grid-template-columns: 1fr; }
-.vimtc-form label { display: block; font-size: 16px; color: var(--bodyColor2); margin: 0 0 6px; font-weight: 700; }
-.vimtc-form label .req { color: #d92800; }
-.vimtc-form input[type="text"], .vimtc-form input[type="email"], .vimtc-form input[type="tel"], .vimtc-form input[type="date"],
-.vimtc-form input[type="time"], .vimtc-form input[type="number"], .vimtc-form select, .vimtc-form textarea {
-  width: 100%; padding: 14px 18px; font: normal 17px/1.3 var(--bodyFont); color: #333; background: #fff;
-  border: 1px solid #d1d1d1; border-radius: 8px;
-}
-.vimtc-form select { -webkit-appearance: auto; appearance: auto; }
-.vimtc-form textarea { min-height: 140px; }
-.vimtc-form .choices { display: flex; flex-wrap: wrap; gap: 10px 24px; }
-.vimtc-form .choices label { font-weight: normal; display: inline-flex; align-items: center; gap: 8px; margin: 0; }
-.vimtc-form .choices input { -webkit-appearance: auto; appearance: auto; width: 18px; height: 18px; }
-.vimtc-form .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: var(--bodyColor2); margin: 0 0 20px; }
-.vimtc-form .consent input { -webkit-appearance: auto; appearance: auto; width: 18px; height: 18px; margin-top: 3px; flex: none; }
-.vimtc-form .consent a { font-weight: 700; color: var(--terColor); }
-.vimtc-form button.btn-style { border: 0; width: 237px; margin: 0; }
-.vimtc-form button.btn-style:disabled { opacity: 0.6; cursor: wait; }
-.vimtc-form .form_status { margin: 20px 0 0; padding: 14px 18px; border-radius: 8px; font-weight: 700; }
-.vimtc-form .form_status.ok { background: #e6f6ef; color: #15663f; }
-.vimtc-form .form_status.err { background: #fcecec; color: #ca4b4b; }
-.vimtc-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-.vimtc-form .signature { border: 1px solid #d1d1d1; border-radius: 8px; background: #fff; touch-action: none; width: 100%; max-width: 420px; height: 140px; display: block; }
-.vimtc-form .signature_tools { display: flex; gap: 15px; align-items: center; margin: 8px 0 0; font-size: 15px; }
-.vimtc-form .signature_tools button { background: none; border: 0; color: var(--terColor); font-weight: 700; cursor: pointer; padding: 0; }
-@media only screen and (max-width: 600px) { .vimtc-form .form_row { grid-template-columns: 1fr; } }
-
-/* Footer "Send Us a Message" form (home page) uses the theme's .btm3_form_parent styles; status message sits below */
-.btm3_form_parent .form_status { color: #fff; font-weight: 700; margin: 10px 0 0; }
-.btm3_form_parent .form_status.err { color: #ffb3b3; }
-
-/* Donate page button */
-.donate_btn a { width: 260px; margin: 25px auto 0; }
-
-/* Sitemap page uses the theme's .sitemap list */
-.sitemap { text-align: left; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff; }
 
 /* Cookie notice (replaces the CookieYes plugin) */
 .cookie_notice { position: fixed; left: 15px; right: 15px; bottom: 15px; z-index: 1200; max-width: 720px; margin: 0 auto;
-  background: var(--primaryColor); color: #fff; padding: 18px 22px; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.35);
-  display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 15px; line-height: 1.5; }
-.cookie_notice a { color: #fceea9; font-weight: 700; text-decoration: underline; }
-.cookie_notice button { border: 0; background: linear-gradient(90deg, #FCEEA9 -0%, #8E5B03 107%); color: #fff; text-shadow: 1px 1px 1px #000;
-  padding: 10px 22px; border-radius: 22px; font: 700 15px/1 var(--bodyFont); text-transform: uppercase; cursor: pointer; }
-
-/* 404 */
-.not_found { text-align: center; padding: 40px 0; }
-.not_found img { margin: 0 auto 20px; display: block; max-width: 300px; }
-
-/* WordPress core block styles the pages relied on (wp-includes/css/dist/block-library). */
-.wp-block-table { margin: 0 0 1em; overflow-x: auto; }
-.wp-block-table table { border-collapse: collapse; width: 100%; }
-.wp-block-table thead { border-bottom: 3px solid; }
-.wp-block-table td, .wp-block-table th { border: 1px solid; padding: 0.5em; }
-.wp-block-table.is-style-regular table, .wp-block-table table.has-fixed-layout { table-layout: fixed; width: 100%; }
-.has-text-align-center { text-align: center; }
-.has-text-align-left { text-align: left; }
-.has-text-align-right { text-align: right; }
-.wp-block-spacer { clear: both; }
-.entry-content > div > table, .nh_accreditation_con table { max-width: 100%; }
+  background: #24272d; color: #e6e8ec; padding: 18px 22px; border-radius: 16px; box-shadow: 0 16px 40px -16px rgba(0,0,0,.5);
+  display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; font-size: 15px; line-height: 1.5;
+  font-family: var(--font-hanken), system-ui, sans-serif; }
+.cookie_notice a { color: #f2c94c; font-weight: 700; text-decoration: underline; text-underline-offset: .18em; }
+.cookie_notice button { border: 0; background: #f2c94c; color: #1f232b; padding: 10px 22px; border-radius: 999px;
+  font: 700 15px/1 var(--font-bricolage), system-ui, sans-serif; cursor: pointer; }
+.cookie_notice button:hover { background: #f7d56a; }
